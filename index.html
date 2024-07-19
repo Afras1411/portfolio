@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html land = "en">
+<html lang = "en">
     <head>
         <meta charset = "UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
                 <div class="social-icons">
                     <a href="https://github.com/Afras1411"><i class='bx bxl-github' ></i> </a>
                     <a href="https://www.linkedin.com/in/afra-sadaf-8bba9b238/"><i class='bx bxl-linkedin' ></i></a>
-                    <a href="afra.sadaf14@gmail.com"><i class='bx bxl-gmail'></i></a>
+                    <a href="mailto:afra.sadaf14@gmail.com"><i class='bx bxl-gmail'></i></a>
                 </div>
                <!--<div class="btn-group">
                 <a href ="#" class = "btn">Contact</a>-->
@@ -104,7 +104,32 @@
                 &copy; Afra Sadaf | All Rights Recieved
             </p>
         </footer>
-        <script src = "script.js"></script>
+        <script>
+            let menuIcon = document.querySelector('#menu-icon');
+            let navbar = document.querySelector('.navbar');
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('header nav a');
+
+            menuIcon.onclick = () => {
+                menuIcon.classList.toggle('bx-x');
+                navbar.classList.toggle('active');
+            };
+
+            window.onscroll = () => {
+                let top = window.scrollY;
+                sections.forEach(sec => {
+                    let offset = sec.offsetTop - 150;
+                    let height = sec.offsetHeight;
+                    let id = sec.getAttribute('id');
+                    if (top >= offset && top < offset + height) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            document.querySelector(`header nav a[href*=${id}]`).classList.add('active');
+                        });
+                    }
+                });
+            };
+        </script>
     </body>
 
 </html>
